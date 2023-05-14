@@ -18,18 +18,18 @@ pub struct Pass {
 }
 
 impl Pass {
-    pub(crate) fn from_raw_fn(create_raw: unsafe extern "C" fn() -> MlirPass) -> Self {
+    pub unsafe fn from_raw_fn(create_raw: unsafe extern "C" fn() -> MlirPass) -> Self {
         Self {
             raw: unsafe { create_raw() },
         }
     }
 
-    pub(crate) unsafe fn to_raw(&self) -> MlirPass {
+    pub unsafe fn to_raw(&self) -> MlirPass {
         self.raw
     }
 
     #[doc(hidden)]
     pub fn __private_from_raw_fn(create_raw: unsafe extern "C" fn() -> MlirPass) -> Self {
-        Self::from_raw_fn(create_raw)
+        unsafe { Self::from_raw_fn(create_raw) }
     }
 }

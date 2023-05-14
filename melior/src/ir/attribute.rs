@@ -53,18 +53,18 @@ impl<'c> Attribute<'c> {
         unsafe { Self::from_raw(mlirUnitAttrGet(context.to_raw())) }
     }
 
-    pub(crate) unsafe fn null() -> Self {
+    pub unsafe fn null() -> Self {
         unsafe { Self::from_raw(mlirAttributeGetNull()) }
     }
 
-    pub(crate) unsafe fn from_raw(raw: MlirAttribute) -> Self {
+    pub unsafe fn from_raw(raw: MlirAttribute) -> Self {
         Self {
             raw,
             _context: Default::default(),
         }
     }
 
-    pub(crate) unsafe fn from_option_raw(raw: MlirAttribute) -> Option<Self> {
+    pub unsafe fn from_option_raw(raw: MlirAttribute) -> Option<Self> {
         if raw.ptr.is_null() {
             None
         } else {

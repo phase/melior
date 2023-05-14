@@ -103,14 +103,14 @@ impl<'c> Type<'c> {
         }
     }
 
-    pub(crate) unsafe fn from_raw(raw: MlirType) -> Self {
+    pub unsafe fn from_raw(raw: MlirType) -> Self {
         Self {
             raw,
             _context: Default::default(),
         }
     }
 
-    pub(crate) unsafe fn from_option_raw(raw: MlirType) -> Option<Self> {
+    pub unsafe fn from_option_raw(raw: MlirType) -> Option<Self> {
         if raw.ptr.is_null() {
             None
         } else {

@@ -67,14 +67,14 @@ impl<'c> Location<'c> {
         unsafe { ContextRef::from_raw(mlirLocationGetContext(self.raw)) }
     }
 
-    pub(crate) unsafe fn from_raw(raw: MlirLocation) -> Self {
+    pub unsafe fn from_raw(raw: MlirLocation) -> Self {
         Self {
             raw,
             _context: Default::default(),
         }
     }
 
-    pub(crate) unsafe fn to_raw(self) -> MlirLocation {
+    pub unsafe fn to_raw(self) -> MlirLocation {
         self.raw
     }
 }

@@ -117,14 +117,14 @@ impl<'c> Operation<'c> {
         unsafe { mlirOperationDump(self.raw) }
     }
 
-    pub(crate) unsafe fn from_raw(raw: MlirOperation) -> Self {
+    pub unsafe fn from_raw(raw: MlirOperation) -> Self {
         Self {
             raw,
             _context: Default::default(),
         }
     }
 
-    pub(crate) unsafe fn into_raw(self) -> MlirOperation {
+    pub unsafe fn into_raw(self) -> MlirOperation {
         let operation = self.raw;
 
         forget(self);
@@ -194,18 +194,18 @@ impl<'a> OperationRef<'a> {
         unsafe { transmute(self.deref().result(index)) }
     }
 
-    pub(crate) unsafe fn to_raw(self) -> MlirOperation {
+    pub unsafe fn to_raw(self) -> MlirOperation {
         self.raw
     }
 
-    pub(crate) unsafe fn from_raw(raw: MlirOperation) -> Self {
+    pub unsafe fn from_raw(raw: MlirOperation) -> Self {
         Self {
             raw,
             _reference: Default::default(),
         }
     }
 
-    pub(crate) unsafe fn from_option_raw(raw: MlirOperation) -> Option<Self> {
+    pub unsafe fn from_option_raw(raw: MlirOperation) -> Option<Self> {
         if raw.ptr.is_null() {
             None
         } else {

@@ -38,11 +38,11 @@ impl<'a> StringRef<'a> {
         }
     }
 
-    pub(crate) unsafe fn to_raw(self) -> MlirStringRef {
+    pub unsafe fn to_raw(self) -> MlirStringRef {
         self.raw
     }
 
-    pub(crate) unsafe fn from_raw(string: MlirStringRef) -> Self {
+    pub unsafe fn from_raw(string: MlirStringRef) -> Self {
         Self {
             raw: string,
             _parent: Default::default(),

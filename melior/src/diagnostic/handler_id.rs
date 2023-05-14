@@ -7,11 +7,11 @@ pub struct DiagnosticHandlerId {
 }
 
 impl DiagnosticHandlerId {
-    pub(crate) unsafe fn from_raw(raw: MlirDiagnosticHandlerID) -> Self {
+    pub unsafe fn from_raw(raw: MlirDiagnosticHandlerID) -> Self {
         Self { raw }
     }
 
-    pub(crate) unsafe fn to_raw(self) -> MlirDiagnosticHandlerID {
+    pub unsafe fn to_raw(self) -> MlirDiagnosticHandlerID {
         self.raw
     }
 }

@@ -2,7 +2,7 @@ use mlir_sys::MlirLogicalResult;
 
 /// A logical result of success or failure.
 #[derive(Clone, Copy, Debug)]
-pub(crate) struct LogicalResult {
+pub struct LogicalResult {
     raw: MlirLogicalResult,
 }
 
@@ -32,11 +32,11 @@ impl LogicalResult {
         self.raw.value == 0
     }
 
-    pub(crate) fn from_raw(result: MlirLogicalResult) -> Self {
+    pub fn from_raw(result: MlirLogicalResult) -> Self {
         Self { raw: result }
     }
 
-    pub(crate) fn to_raw(self) -> MlirLogicalResult {
+    pub unsafe fn to_raw(self) -> MlirLogicalResult {
         self.raw
     }
 }
